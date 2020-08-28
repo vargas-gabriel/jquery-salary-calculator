@@ -1,5 +1,8 @@
 console.log( 'js' );
 $(document).ready(onReady);
 function onReady() {
-    console.log( 'jq' );
+    $('#submitButton').on('click', addEmployee);
+}
+function addEmployee(){
+    console.log( 'you clicked me' );
 }
