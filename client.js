@@ -23,22 +23,18 @@ function addEmployee(){
 
 function calculateSalary(){
     console.log('in calculateSalary ')
-    let el = $('#totalMonthlyIn');
-    el.empty();
-    let finalMonthlyCosts = 0;
-    let monthlyCosts = $('#annualSalaryIn').val()
-    let totalMonthlyCosts = Number(monthlyCosts)/12;
-    /*
+    let monthlyCosts = 0;
     for (let i = 0; i < employeeInfo.length; i++) {
-        finalMonthlyCosts +=  Number(totalMonthlyCosts);
-        if (Number(totalMonthlyCosts) > 20000) {
-            console.log('salaries too high')
+        monthlyCosts +=  Number(employeeInfo[i].AnnualSalary);
+        if (monthlyCosts/12 > 20000) {
+            $('h4').css('background-color', 'red');
 
         }
-        el.append( Number(totalMonthlyCosts) );
-        
-    }*/// -logic/math issue
-
+    }// -logic/math issue
+    let finalMonthlyCosts = monthlyCosts/12;
+    let el = $('#totalMonthlyIn');
+    el.empty();
+    el.append(finalMonthlyCosts);
 }
 
 function displayEmployeeInfo(){
@@ -46,9 +42,16 @@ function displayEmployeeInfo(){
     let el = $( '#employeeInfoOut' );
     el.empty();
     for (let i = 0; i < employeeInfo.length; i++ ) {
-        el.append(`<tr> <th>First Name: ${ employeeInfo[i].FirstName}</th><th>Last Name: ${ employeeInfo[i].LastName}</th><th>ID: ${ employeeInfo[i].ID}</th><th>Title: ${ employeeInfo[i].Title}</th><th>Annual Salary: $${ employeeInfo[i].AnnualSalary}</th></tr>` );
+        el.append(`<tr><td>First Name: ${ employeeInfo[i].FirstName}</td>
+        <td>Last Name: ${ employeeInfo[i].LastName}</td>
+        <td>ID: ${ employeeInfo[i].ID}</td>
+        <td>Title: ${ employeeInfo[i].Title}</td>
+        <td>Annual Salary: $${ employeeInfo[i].AnnualSalary}</td>
+        <td><button class="delete">Delete</button></td>
+        </tr>`);
     }
     clearInput();
+    deleteButton();
 }
 function clearInput(){
     console.log( 'in clearInput');
@@ -58,3 +61,12 @@ function clearInput(){
     $('#titleIn').val('')
     $('#annualSalaryIn').val('')
 }
+function deleteButton(){
+    $('.delete').on('click', deleteRow)
+}
+function deleteRow(){
+$(this).closest('tr').remove();
+
+}
+
+
