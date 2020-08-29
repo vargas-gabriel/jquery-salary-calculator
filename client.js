@@ -8,7 +8,7 @@ function onReady() {
 function addEmployee(){
     console.log( 'you clicked me' );
     const newItem = {
-        FirstName: $('#firstNameIn').val(),
+        FirstName: $('#firstNameIn').val() ,
         LastName: $('#lastNameIn').val(),
         ID: $('#idIn').val(),
         Title: $('#titleIn').val(),
@@ -31,8 +31,15 @@ function displayEmployeeInfo(){
     let el = $( '#employeeInfoOut' );
     el.empty();
     for (let i = 0; i < employeeInfo.length; i++ ) {
-        el.append(`<li> FirstName: ${ employeeInfo[i].FirstName}  LastName: ${ employeeInfo[i].LastName }  ID: 
-    ${ employeeInfo[i].ID }  Title: ${ employeeInfo[i].Title}  AnnualSalary: ${ employeeInfo[i].AnnualSalary} </li>` );
+        el.append(`<tr> <th>First Name: ${ employeeInfo[i].FirstName}</th><th>Last Name: ${ employeeInfo[i].LastName}</th><th>ID: ${ employeeInfo[i].ID}</th><th>Title: ${ employeeInfo[i].Title}</th><th>Annual Salary: ${ employeeInfo[i].AnnualSalary}</th></tr>` );
     }
-    
+    clearInput();
+}
+function clearInput(){
+    console.log( 'in clearInput');
+    $('#firstNameIn').reset()
+    $('#firstNameIn').reset()
+    $('#idIn').reset()
+    $('#titleIn').reset()
+    $('#annualSalaryIn').reset()
 }
