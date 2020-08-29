@@ -22,7 +22,22 @@ function addEmployee(){
 }//end addEmployee
 
 function calculateSalary(){
-    console.log( 'in calculateSalary');
+    console.log('in calculateSalary ')
+    let el = $('#totalMonthlyIn');
+    el.empty();
+    let finalMonthlyCosts = 0;
+    let monthlyCosts = $('#annualSalaryIn').val()
+    let totalMonthlyCosts = Number(monthlyCosts)/12;
+    /*
+    for (let i = 0; i < employeeInfo.length; i++) {
+        finalMonthlyCosts +=  Number(totalMonthlyCosts);
+        if (Number(totalMonthlyCosts) > 20000) {
+            console.log('salaries too high')
+
+        }
+        el.append( Number(totalMonthlyCosts) );
+        
+    }*/// -logic/math issue
 
 }
 
@@ -31,7 +46,7 @@ function displayEmployeeInfo(){
     let el = $( '#employeeInfoOut' );
     el.empty();
     for (let i = 0; i < employeeInfo.length; i++ ) {
-        el.append(`<tr> <th>First Name: ${ employeeInfo[i].FirstName}</th><th>Last Name: ${ employeeInfo[i].LastName}</th><th>ID: ${ employeeInfo[i].ID}</th><th>Title: ${ employeeInfo[i].Title}</th><th>Annual Salary: ${ employeeInfo[i].AnnualSalary}</th></tr>` );
+        el.append(`<tr> <th>First Name: ${ employeeInfo[i].FirstName}</th><th>Last Name: ${ employeeInfo[i].LastName}</th><th>ID: ${ employeeInfo[i].ID}</th><th>Title: ${ employeeInfo[i].Title}</th><th>Annual Salary: $${ employeeInfo[i].AnnualSalary}</th></tr>` );
     }
     clearInput();
 }
