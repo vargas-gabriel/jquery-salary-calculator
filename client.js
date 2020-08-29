@@ -37,9 +37,9 @@ function displayEmployeeInfo(){
 }
 function clearInput(){
     console.log( 'in clearInput');
-    $('#firstNameIn').reset()
-    $('#firstNameIn').reset()
-    $('#idIn').reset()
-    $('#titleIn').reset()
-    $('#annualSalaryIn').reset()
+    $('#firstNameIn').val('')
+    $('#lastNameIn').val('')
+    $('#idIn').val('')
+    $('#titleIn').val('')
+    $('#annualSalaryIn').val('')
 }
