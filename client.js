@@ -3,8 +3,8 @@ $(document).ready(onReady);
 let employeeInfo = [];
 
 function onReady() {
-    $('#submitButton').on('click', addEmployee);
 }//end onReady
+$(document).on( 'click', '#submitButton', addEmployee);
 function addEmployee(){
     console.log( 'you clicked me' );
     const newItem = {
@@ -27,10 +27,9 @@ function calculateSalary(){
     for (let i = 0; i < employeeInfo.length; i++) {
         monthlyCosts +=  Number(employeeInfo[i].AnnualSalary);
         if (monthlyCosts/12 > 20000) {
-            $('h4').css('background-color', 'red');
-
+            $('span').css('background-color', 'red');
         }
-    }// -logic/math issue
+    }
     let finalMonthlyCosts = monthlyCosts/12;
     let el = $('#totalMonthlyIn');
     el.empty();
@@ -42,31 +41,35 @@ function displayEmployeeInfo(){
     let el = $( '#employeeInfoOut' );
     el.empty();
     for (let i = 0; i < employeeInfo.length; i++ ) {
-        el.append(`<tr><td>First Name: ${ employeeInfo[i].FirstName}</td>
-        <td>Last Name: ${ employeeInfo[i].LastName}</td>
-        <td>ID: ${ employeeInfo[i].ID}</td>
-        <td>Title: ${ employeeInfo[i].Title}</td>
-        <td>Annual Salary: $${ employeeInfo[i].AnnualSalary}</td>
-        <td><button class="delete">Delete</button></td>
-        </tr>`);
+    el.append(`<tr><td>First Name: ${ employeeInfo[i].FirstName}</td>
+    <td>Last Name: ${ employeeInfo[i].LastName}</td>
+    <td class="ID">ID Number:  ${ employeeInfo[i].ID}</td>
+    <td>Title: ${ employeeInfo[i].Title}</td>
+    <td>Annual Salary: $${ employeeInfo[i].AnnualSalary}</td>
+    <td><button class="delete" data-id"button">Delete</button></td></tr>
+    `);
     }
     clearInput();
-    deleteButton();
 }
-function clearInput(){
+ function clearInput(){
     console.log( 'in clearInput');
     $('#firstNameIn').val('')
     $('#lastNameIn').val('')
     $('#idIn').val('')
     $('#titleIn').val('')
     $('#annualSalaryIn').val('')
+    deleteButton();
 }
+//$(document).on('click', '#delete', deleteRow);
 function deleteButton(){
-    $('.delete').on('click', deleteRow)
+  $('.delete').on('click', deleteRow )
 }
+    
 function deleteRow(){
-$(this).closest('tr').remove();
-
+    
+    let valU = $(this).closest('tr').find('.ID').text();
+     console.log( valU );
+     //let matches = employeeInfo.findIndex(checkID(valU));
+     //console.log(matches)
+     $(this).closest('tr').remove(); 
 }
-
-
