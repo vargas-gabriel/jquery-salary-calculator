@@ -34,7 +34,7 @@ function calculateSalary(){
     let el = $('#totalMonthlyIn');
     el.empty();
     el.append(finalMonthlyCosts);
-}
+}//end calculateSalary
 
 function displayEmployeeInfo(){
     console.log( 'in displayEmployeeInfo' );
@@ -50,7 +50,7 @@ function displayEmployeeInfo(){
     `);
     }
     clearInput();
-}
+}//end displayEmployeeInfo
  function clearInput(){
     console.log( 'in clearInput');
     $('#firstNameIn').val('')
@@ -59,7 +59,7 @@ function displayEmployeeInfo(){
     $('#titleIn').val('')
     $('#annualSalaryIn').val('')
     deleteButton();
-}
+}//end clearInput
 //$(document).on('click', '#delete', deleteRow);
 function deleteButton(){
   $('.delete').on('click', deleteRow )
@@ -72,4 +72,4 @@ function deleteRow(){
      //let matches = employeeInfo.findIndex(checkID(valU));
      //console.log(matches)
      $(this).closest('tr').remove(); 
-}
+}//end deleteRow

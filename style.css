@@ -3,6 +3,9 @@ table, th, td {
     border-collapse: collapse;
     background-color: white;
   }
-body{
-background-color: #D7FFF1;
+body {
+    background-color: #D7FFF1;
+  }
+  h1{
+      color: #466060;
   }
