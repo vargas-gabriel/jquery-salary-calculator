@@ -64,12 +64,27 @@ function displayEmployeeInfo(){
 function deleteButton(){
   $('.delete').on('click', deleteRow )
 }
+function checkID(ID){
+    if (ID === employeeInfo.length)
+    return ID;
+}
     
 function deleteRow(){
     
     let valU = $(this).closest('tr').find('.ID').text();
      console.log( valU );
-     //let matches = employeeInfo.findIndex(checkID(valU));
-     //console.log(matches)
-     $(this).closest('tr').remove(); 
+     let match = employeeInfo.findIndex(function(item) {
+         return item.ID == checkID(valU)
+     });
+    console.log(match)
+    $(this).closest('tr').remove(); 
+    employeeInfo.splice(match)
+    calculateSalary();
+    let monthlyCosts = 0;
+    for (let i = 0; i < employeeInfo.length; i++) {
+        monthlyCosts +=  Number(employeeInfo[i].AnnualSalary);
+        if (monthlyCosts/12 < 20000) {
+            $('span').css('background-color', 'white');
+        }
+     }
 }//end deleteRow

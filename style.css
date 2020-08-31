@@ -9,3 +9,6 @@ body {
   h1{
       color: #466060;
   }
+  span {
+    background-color: white;
+  }
