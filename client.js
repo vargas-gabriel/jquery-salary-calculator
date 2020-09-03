@@ -1,7 +1,6 @@
 console.log( 'js' );
 $(document).ready(onReady);
 let employeeInfo = [];
-
 function onReady() {
 }//end onReady
 $(document).on( 'click', '#submitButton', addEmployee);
@@ -29,6 +28,9 @@ function calculateSalary(){
         if (monthlyCosts/12 > 20000) {
             $('span').css('background-color', 'red');
         }
+        else{
+            $('span').css('background-color', 'white');
+        }
     }
     let finalMonthlyCosts = monthlyCosts/12;
     let el = $('#totalMonthlyIn');
@@ -41,11 +43,11 @@ function displayEmployeeInfo(){
     let el = $( '#employeeInfoOut' );
     el.empty();
     for (let i = 0; i < employeeInfo.length; i++ ) {
-    el.append(`<tr><td>First Name: ${ employeeInfo[i].FirstName}</td>
-    <td>Last Name: ${ employeeInfo[i].LastName}</td>
-    <td class="ID">ID Number:  ${ employeeInfo[i].ID}</td>
-    <td>Title: ${ employeeInfo[i].Title}</td>
-    <td>Annual Salary: $${ employeeInfo[i].AnnualSalary}</td>
+    el.append(`<tr><td> ${ employeeInfo[i].FirstName}</td>
+    <td> ${ employeeInfo[i].LastName}</td>
+    <td class="ID">  ${ employeeInfo[i].ID}</td>
+    <td> ${ employeeInfo[i].Title}</td>
+    <td> $${ employeeInfo[i].AnnualSalary}</td>
     <td><button class="delete" data-id"button">Delete</button></td></tr>
     `);
     }
